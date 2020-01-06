@@ -1,5 +1,7 @@
 {
   "name": "zpnCapAngular",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

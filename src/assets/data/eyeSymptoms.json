@@ -1,0 +1,28 @@
+{
+    "eyeSymptoms": [
+        {
+            "id": "1",
+            "title": "Any problem of glering of light in night"
+        },
+        {
+            "id": "2",
+            "title": "Difficuty to see in bright light/sunlight"
+        },
+        {
+            "id": "3",
+            "title": "Double Vision"
+        },
+        {
+            "id": "4",
+            "title": "Redness in your eyes"
+        },
+        {
+            "id": "5",
+            "title": "Pain in your eyes"
+        },
+        {
+            "id": "6",
+            "title": "Any Others"
+        }
+    ]
+}

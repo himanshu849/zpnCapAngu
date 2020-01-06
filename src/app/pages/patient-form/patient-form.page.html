@@ -1,0 +1,237 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Patient Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-col>
+    <ion-grid *ngIf="hidePageOne && !hidePageTwo && !hidePageThree">
+      <ion-card>
+        <ion-card-header color="dark" class="text-header" style="text-align: center; ">
+          Patient Information
+        </ion-card-header>
+        <ion-row>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-card-content *ngFor="let item of myData">
+          <ion-row>
+            <ion-col size="4" class="title-text">Uid:</ion-col>
+            <ion-col size="8" class="value-text">{{item?.id}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Name:</ion-col>
+            <ion-col size="8" class="value-text">{{item?.name}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Age:</ion-col>
+            <ion-col size="8" class="value-text">{{item?.age}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Gender:</ion-col>
+            <ion-col size="8" class="value-text">{{item?.gender}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Contact Number:</ion-col>
+            <ion-col size="8" class="value-text">{{item?.contact}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Email Id:</ion-col>
+            <ion-col size="8" class="value-text">{{item?.email}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Exam Center:</ion-col>
+            <ion-col size="8" class="value-text">{{item?.center}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Visit Date:</ion-col>
+            <ion-col size="8" class="value-text">12 / jan / 2020</ion-col>
+          </ion-row>
+
+
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        
+        <ion-card-header class="text-header" color="dark" style="text-align: center; ">
+          Medical History
+        </ion-card-header>
+
+        <ion-list>
+          <ion-item *ngFor="let entry of formMedical">
+            <ion-checkbox slot="start" color="dark" [(ngModel)]="entry.isChecked" (ionChange)="checkedValue(entry)">
+            </ion-checkbox>
+            <ion-label>{{entry.val}}</ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-item lines="none">
+          <ion-label position="fixed">Others:</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-card>
+      <ion-card>
+        
+        <ion-card-header class="text-header" color="dark" style="text-align: center; ">
+          Ocular History
+        </ion-card-header>
+
+        <ion-list>
+          <ion-item *ngFor="let entry of formOcular">
+            <ion-checkbox slot="start" color="dark" [(ngModel)]="entry.isChecked" (ionChange)="checkedValue(entry)">
+            </ion-checkbox>
+            <ion-label>{{entry.val}}</ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-item lines="none">
+          <ion-label position="fixed">Others: </ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-card>
+      <ion-row class="ion-justify-content-center">
+        <ion-button type="submit" color="dark" class="next-button" (click)="onClickNext('one')">Next</ion-button>
+      </ion-row>
+
+    </ion-grid>
+    <ion-grid *ngIf="!hidePageOne && hidePageTwo && !hidePageThree">
+      <ion-card>
+        <ion-card-header class="card-header" color="dark">
+          Eye Symptoms Questionnarie
+        </ion-card-header>
+        <ion-card-subtitle class="card-subtitle ion-padding-top">Do you have ?</ion-card-subtitle>
+        <ion-card-content>
+
+          <ion-list class="ion-no-padding" *ngFor="let item of eyeSymptoms; let i = index">
+            <ion-radio-group>
+              <ion-list-header>
+                <ion-label>{{i+1}}. {{item.title}} :</ion-label>
+              </ion-list-header>
+              <ion-row>
+                <ion-item lines="none">
+                  <ion-label>Yes</ion-label>
+                  <ion-radio slot="start" value="yes" color="dark" checked></ion-radio>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label>No</ion-label>
+                  <ion-radio slot="start" color="dark" value="no"></ion-radio>
+                </ion-item>
+              </ion-row>
+            </ion-radio-group>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header class="card-header" color="dark">Visual Activity Information</ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="ion-padding-top" style="color: black; font-weight: bold;">Visual Activity: </ion-col>
+            <ion-col>
+              <ion-segment (ionChange)="segmentChanged($event)" color="dark">
+                <ion-segment-button value="friends" checked>
+                  <ion-label>Aided</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="enemies">
+                  <ion-label>Un Aided</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="color: black; font-weight: bold;" class="ion-padding-top">
+              <ion-label>Distance:</ion-label>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">OD:</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">OS:</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="color: black; font-weight: bold;">
+              <ion-label>Near:</ion-label>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">OD:</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">OS:</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-row>
+        <ion-col>
+          <ion-button style="float: right;" (click)="onClickBack('one')" color="dark">Back</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button  color="dark" (click)="onClickNext('two')">Next</ion-button>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+    <ion-grid *ngIf="!hidePageOne && !hidePageTwo && hidePageThree">
+      <ion-card>
+        <ion-card-header color="dark" class="card-header">Slit Lamp Example</ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="ion-padding-top" style="color: black; font-weight: bold;">Clinical findings: </ion-col>
+            <ion-row>
+              <ion-segment (ionChange)="segmentChanged($event)" color="dark">
+                <ion-segment-button value="friends" checked>
+                  <ion-label>OD</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="enemies">
+                  <ion-label>OS</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-row>
+          </ion-row>
+            <ion-list class="ion-no-padding" *ngFor="let item of slitLamp; let i = index">
+              <ion-radio-group>
+                <ion-list-header>
+                  <ion-label>{{i+1}}. {{item.title}} :</ion-label>
+                </ion-list-header>
+                <ion-row>
+                  <ion-item lines="none">
+                    <ion-label>Yes</ion-label>
+                    <ion-radio slot="start" value="yes" color="dark" checked></ion-radio>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-label>No</ion-label>
+                    <ion-radio slot="start" color="dark" value="no"></ion-radio>
+                  </ion-item>
+                </ion-row>
+              </ion-radio-group>
+            </ion-list>
+  
+        </ion-card-content>
+      </ion-card>
+      <ion-row>
+        <ion-col>
+          <ion-button color="dark" (click)="onClickBack('two')" style="float: right;">Back</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button color="dark" (click)="onClickNext('three')">Next</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-col>
+</ion-content>

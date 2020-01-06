@@ -1,0 +1,47 @@
+
+
+
+<ion-content>
+  <div class="bg-image">
+    <ion-row>
+      <img class="zeiss-logo" />
+    </ion-row>
+
+    <ion-row style="left: 50%">
+      <ion-col class="carl-title-col">
+        <!-- ZEISS®<br />PREFERED<br />NETWORK -->
+        ZPN
+      </ion-col>
+    </ion-row>
+
+    <ion-grid class="grid-sign-reg">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-sm="12" size-lg="4">
+          <ion-button
+            class="button-sign-reg"
+            expand="full"
+            color="zeisscolor"
+            (click)="onClickLoginBtn()"
+            [routerLink]="['/home']"
+            routerLinkActive="router-link-active"
+            >SIGN IN</ion-button
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-sm="12" size-lg="4">
+          <ion-button
+            class="button-sign-reg"
+            expand="full"
+            color="zeisscolor"
+            (click)="onClickRegisterBtn()"
+            [routerLink]="['/registeration']"
+            routerLinkActive="router-link-active"
+            >REGISTER</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+

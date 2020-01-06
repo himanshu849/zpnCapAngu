@@ -6,6 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
+  
+  public appPages = [
+    {
+      title: 'Patient List',
+      url: '/user-uploader',
+      icon: 'home'
+    },
+    {
+      title: 'Patient History',
+      url: '/list',
+      icon: 'list'
+    }
+  ];
   private selectedItem: any;
   private icons = [
     'flask',
@@ -19,13 +32,12 @@ export class ListPage implements OnInit {
     'bluetooth',
     'build'
   ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
+  public items: Array<{ title: string; note: string; }> = [];
   constructor() {
     for (let i = 1; i < 11; i++) {
       this.items.push({
-        title: 'Item ' + i,
+        title: 'Patient ' + i,
         note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
   }

@@ -5,8 +5,18 @@ import { Component } from '@angular/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage  {
 
-  constructor() {}
-
+  public appPages = [
+    {
+      title: 'Patient List',
+      url: '/user-uploader',
+      icon: 'home'
+    },
+    {
+      title: 'Patient History',
+      url: '/list',
+      icon: 'list'
+    }
+  ];
 }

@@ -1,0 +1,32 @@
+{
+    "slitLamp": [
+        {
+            "id": "1",
+            "title": "Conjucutiva"
+        },
+        {
+            "id": "2",
+            "title": "Cornea"
+        },
+        {
+            "id": "3",
+            "title": "Anterior Chamber"
+        },
+        {
+            "id": "4",
+            "title": "Pupillary Reaction"
+        },
+        {
+            "id": "5",
+            "title": "Lens"
+        },
+        {
+            "id": "6",
+            "title": "Abnormal Findings"
+        },
+        {
+            "id": "7",
+            "title": "Any other Findings"
+        }
+    ]
+}

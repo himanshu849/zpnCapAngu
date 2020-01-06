@@ -1,0 +1,29 @@
+
+<ion-content>
+  <ion-searchbar (ionInput)="searchPatient($event)" placeholder="Search patient name..."></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of myData | filter: searchTeaxt"  [routerLink]="['/patient-form', item.id]"
+      routerLinkActive="router-link-active">
+      <ion-grid class="ion-no-padding">
+        <ion-col>
+          <ion-row>
+            <ion-col size="4" class="title-text">Id:</ion-col>
+            <ion-col size="8" class="value-text">{{ item.id }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Name:</ion-col>
+            <ion-col size="8" class="value-text">{{ item.name }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Age:</ion-col>
+            <ion-col size="8" class="value-text">{{ item.age }} Years</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4" class="title-text">Gender:</ion-col>
+            <ion-col size="8" class="value-text">Male</ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>
