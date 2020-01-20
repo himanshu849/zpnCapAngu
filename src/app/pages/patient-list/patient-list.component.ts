@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PatientList } from "src/app/interfaces/patient-list";
 import { PatientListService } from "src/app/services/patientListService";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-patient-list",
@@ -8,19 +9,18 @@ import { PatientListService } from "src/app/services/patientListService";
   styleUrls: ["./patient-list.component.scss"]
 })
 export class PatientListComponent implements OnInit {
-  myData: PatientList[] = [];
+  patientData: PatientList[] = [];
   items: PatientList[] = [];
-  searchTeaxt: string;
+  searchText: string;
 
   // public items: Array<{id: number, name: string, age: number, gender: string}> = [];
 
-  constructor(private patientListService: PatientListService) {}
+  constructor(private patientListService: PatientListService, private router: Router, private activeRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.patientListService.getPatentList().subscribe(
       (data: any) => {
-        this.myData = data;
-        this.items = data;
+        this.patientData = data.data;
       },
       error => {
         console.log(error);
@@ -30,16 +30,6 @@ export class PatientListComponent implements OnInit {
 
 
   searchPatient(event: any) {
-    this.searchTeaxt = event.target.value;
-    // const data = this.myData;
-    // const value = event.target.value;
-    // console.log(value)
-    // if (value && value.trim() !== '') {
-    //   this.myData = data.filter(item => {
-    //     return item.name.toLowerCase().includes(value.toLowerCase());
-    //   });
-    // }else {
-    //   this.myData = this.items;
-    // }
+    this.searchText = event.target.value;
   }
 }

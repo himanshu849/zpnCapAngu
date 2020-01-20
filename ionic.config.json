@@ -1,7 +1,8 @@
 {
-  "name": "zpnCapAngular",
+  "name": "zpnApp",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

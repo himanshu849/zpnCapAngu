@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'user-uploader',
     loadChildren: () => import('./user-uploader/user-uploader.module').then( m => m.UserUploaderPageModule)
   },
+  {
+    path: 'patient-details/:id',
+    loadChildren: () => import('./pages/patient-details/patient-details.module').then( m => m.PatientDetailsPageModule)
+  },
 ];
 
 @NgModule({

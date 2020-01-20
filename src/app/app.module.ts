@@ -12,6 +12,10 @@ import { PatientListService } from './services/patientListService';
 import { HttpClientModule } from '@angular/common/http';
 import { FilerPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from './services/login.service';
+import { ToastControlerService } from 'src/controller/tost.controller';
+import { NetworkProvider } from 'src/controller/network.controller';
+import { Network } from '@ionic-native/network/ngx';
 
 
 @NgModule({
@@ -28,6 +32,10 @@ import { FormsModule } from '@angular/forms';
     StatusBar,
     SplashScreen,
     PatientListService,
+    LoginService,
+    ToastControlerService,
+    NetworkProvider,
+    Network,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

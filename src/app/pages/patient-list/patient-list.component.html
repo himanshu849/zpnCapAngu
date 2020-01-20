@@ -2,10 +2,10 @@
 <ion-content>
   <ion-searchbar (ionInput)="searchPatient($event)" placeholder="Search patient name..."></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let item of myData | filter: searchTeaxt"  [routerLink]="['/patient-form', item.id]"
+    <ion-item *ngFor="let item of patientData | filter: searchText"  [routerLink]="['/patient-details', item.id]"
       routerLinkActive="router-link-active">
       <ion-grid class="ion-no-padding">
-        <ion-col>
+        <ion-col >
           <ion-row>
             <ion-col size="4" class="title-text">Id:</ion-col>
             <ion-col size="8" class="value-text">{{ item.id }}</ion-col>
@@ -20,7 +20,7 @@
           </ion-row>
           <ion-row>
             <ion-col size="4" class="title-text">Gender:</ion-col>
-            <ion-col size="8" class="value-text">Male</ion-col>
+            <ion-col size="8" class="value-text">{{ item.gender }}</ion-col>
           </ion-row>
         </ion-col>
       </ion-grid>

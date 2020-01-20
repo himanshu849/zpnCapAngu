@@ -1,0 +1,227 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>patientDetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center" *ngFor="let item of patientDetails">
+      <ion-col size-sm="12" size-lg="10">
+        <ion-card>
+          <ion-card-header color="zeisscolor">Patient Information</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="5" class="title-text">UID :</ion-col>
+              <ion-col size="7" class="value-text">{{item.UID}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Name :</ion-col>
+              <ion-col size="7" class="value-text">{{item.name}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">age :</ion-col>
+              <ion-col size="7" class="value-text">{{item.age}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Gender :</ion-col>
+              <ion-col size="7" class="value-text">{{item.gender}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Contact Number :</ion-col>
+              <ion-col size="7" class="value-text">{{item.contactNo}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Email Id :</ion-col>
+              <ion-col size="7" class="value-text">{{item.emailId}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Exam Center : </ion-col>
+              <ion-col size="7" class="value-text">{{item.examCenter}}</ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="zeisscolor">Medical History: </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="5" class="title-text">Hypertenson: </ion-col>
+              <ion-col size="7" class="value-text">{{item.medicalHistory.hypertension ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Diabetes: </ion-col>
+              <ion-col size="7" class="value-text">{{item.medicalHistory.diabetes ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">None: </ion-col>
+              <ion-col size="7" class="value-text">{{item.medicalHistory.none}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Other: </ion-col>
+              <ion-col size="7" class="value-text">{{item.medicalHistory.other ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="zeisscolor">Ocular History : </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="5" class="title-text">Glaucoma: </ion-col>
+              <ion-col size="7" class="value-text">{{item.ocularHistory.glaucoma ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Prior Surgery: </ion-col>
+              <ion-col size="7" class="value-text">{{item.ocularHistory.priorSurgery ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">None: </ion-col>
+              <ion-col size="7" class="value-text">{{item.ocularHistory.none}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Other: </ion-col>
+              <ion-col size="7" class="value-text">{{item.ocularHistory.other ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="zeisscolor">Visual Activity : Unaided </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <ion-title>Distance</ion-title>
+                <ion-row>
+                  <ion-col class="title-text">OD:</ion-col>
+                  <ion-col class="value-text">{{item.visualAcuity.unaided.distance.od}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="title-text">OS:</ion-col>
+                  <ion-col class="value-text">{{item.visualAcuity.unaided.distance.os}}</ion-col>
+                </ion-row>
+
+              </ion-col>
+
+              <ion-col>
+                <ion-title>Near</ion-title>
+                <ion-row>
+                  <ion-col class="title-text">OD:</ion-col>
+                  <ion-col class="value-text">{{item.visualAcuity.unaided.near.od}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="title-text">OS:</ion-col>
+                  <ion-col class="value-text">{{item.visualAcuity.unaided.near.os}}</ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="zeisscolor">Visual Activity : Aided </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <ion-title>Distance</ion-title>
+                <ion-row>
+                  <ion-col class="title-text">OD:</ion-col>
+                  <ion-col class="value-text">{{item.visualAcuity.aided.distance.od}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="title-text">OS:</ion-col>
+                  <ion-col class="value-text">{{item.visualAcuity.aided.distance.os}}</ion-col>
+                </ion-row>
+
+              </ion-col>
+
+              <ion-col>
+                <ion-title>Near</ion-title>
+                <ion-row>
+                  <ion-col class="title-text">OD:</ion-col>
+                  <ion-col class="value-text">{{item.visualAcuity.aided.near.od}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="title-text">OS:</ion-col>
+                  <ion-col class="value-text">{{item.visualAcuity.aided.near.os}}</ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="zeisscolor">
+            Slit lamp Examination: OD
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="5" class="title-text">Conjucativa : </ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OD.conjunctiva ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Cornea : </ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OD.cornea ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Anterior Chamber : </ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OD.anteriorChamber ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Pupillary Reaction :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OD.pupiliaryReaction ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Lens :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OD.lens ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Abnormal Findings :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OD.abnormalFindings}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Any Other Finding :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OD.otherFindings}}</ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header color="zeisscolor">
+            Slit lamp Examination: OS
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="5" class="title-text">Conjucativa :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OS.conjunctiva ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Cornea :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OS.cornea ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Anterior Chamber :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OS.anteriorChamber ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Pupillary Reaction :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OS.pupiliaryReaction ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Lens :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OS.lens ? 'YES' : 'NO'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Abnormal Findings :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OS.abnormalFindings}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="title-text">Any Other Finding :</ion-col>
+              <ion-col size="7" class="value-text">{{item.slitLampFindings.OS.otherFindings}}</ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

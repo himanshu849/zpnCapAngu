@@ -1,6 +1,3 @@
-
-
-
 <ion-content>
   <div class="bg-image">
     <ion-row>
@@ -10,25 +7,49 @@
     <ion-row style="left: 50%">
       <ion-col class="carl-title-col">
         <!-- ZEISS®<br />PREFERED<br />NETWORK -->
-        ZPN
+       <ion-label color="zeisscolor">ZPN</ion-label> 
       </ion-col>
     </ion-row>
 
     <ion-grid class="grid-sign-reg">
-      <ion-row class="ion-justify-content-center">
-        <ion-col size-sm="12" size-lg="4">
-          <ion-button
-            class="button-sign-reg"
-            expand="full"
-            color="zeisscolor"
-            (click)="onClickLoginBtn()"
-            [routerLink]="['/home']"
-            routerLinkActive="router-link-active"
-            >SIGN IN</ion-button
-          >
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-justify-content-center">
+      <form #loginForm="ngForm" (ngSubmit)="(loginForm)">
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-sm="12" size-lg="4">
+            <ion-item>
+              <ion-label position="floating">Email Id:</ion-label>
+              <ion-input type="email" name="emailId" ngModel #emailCtrl="ngModel" required email></ion-input>
+            </ion-item>
+            <div *ngIf="!emailCtrl.valid && emailCtrl.touched">
+              <ion-label class="ion-no-padding"  class="error-font-style" color="danger">Email id is not valid.</ion-label>
+            </div>
+
+            <ion-item>
+              <ion-label position="floating">Password:</ion-label>
+              <ion-input type="password" name="password" ngModel  #passwordCtrl="ngModel" required minlength="6"></ion-input>
+            </ion-item>
+            <div *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
+                  <ion-label class="ion-no-padding" class="error-font-style" color="danger">Password is required minimum five character.</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-sm="12" size-lg="4" >
+            <ion-button
+              [disabled]="loginForm.invalid"
+              type="submit"
+              class="button-sign-reg"
+              expand="full"
+              color="zeisscolor"
+              (click)="onClickLoginBtn(loginForm)"
+             
+              >SIGN IN</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </form>
+
+      <!-- <ion-row class="ion-justify-content-center">
         <ion-col size-sm="12" size-lg="4">
           <ion-button
             class="button-sign-reg"
@@ -40,8 +61,7 @@
             >REGISTER</ion-button
           >
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </ion-grid>
   </div>
 </ion-content>
-

@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, Events } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
+import { LoginService } from './services/login.service';
+import { NetworkProvider } from 'src/controller/network.controller';
+import { ToastControlerService } from 'src/controller/tost.controller';
+import { Plugins, PluginListenerHandle, NetworkStatus } from '@capacitor/core';
+//import { Network } from '@ionic-native/network/ngx';
+
+const { Network } = Plugins;
+
 
 @Component({
   selector: 'app-root',
@@ -10,6 +19,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  networkListner: PluginListenerHandle;
+  networkStatus: NetworkStatus;
   public appPages = [
     {
       title: 'Patient List',
@@ -17,7 +28,12 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Patient History',
+      title: 'Dashboard',
+      url: '/list',
+      icon: 'list'
+    },
+    {
+      title: 'Past Patient',
       url: '/list',
       icon: 'list'
     }
@@ -26,7 +42,11 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router,
+    private loginSvc: LoginService,
+    private tostCtrl: ToastControlerService,
+   // private network: Network
   ) {
     this.initializeApp();
   }
@@ -35,6 +55,32 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.checkNetwork()
+      const zpnuser = JSON.parse(localStorage.getItem('zpnuser'));
+      if (zpnuser && zpnuser.jwt_token) {
+        this.router.navigate(['/home']);
+      }
     });
+  }
+
+  async checkNetwork() {
+    this.networkListner = Network.addListener('networkStatusChange', (status) => {
+      console.log("status: "+status)
+     // this.networkStatus = status;
+      if (!status.connected) {
+        this.tostCtrl.failureToast('Please check your internet connection');
+      }
+    });
+
+    const status = await Network.getStatus();
+    if (!status.connected) {
+      this.tostCtrl.failureToast('Please check your internet connection');
+    }
+
+  }
+
+  logout() {
+    this.loginSvc.logOutUser();
   }
 }

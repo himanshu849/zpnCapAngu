@@ -74,4 +74,20 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-color-zeisscolor: #141e8c;
+  --ion-color-zeisscolor-rgb: 	152, 154, 162;
+  --ion-color-zeisscolor-contrast: #ffffff;
+  --ion-color-zeisscolor-contrast-rgb:	255, 255, 255;
+  --ion-color-zeisscolor-shade: #3f4ac5;
+  --ion-color-zeisscolor-tint: #3f4ac5;
+
+  .ion-color-zeisscolor{
+    --ion-color-base: var(--ion-color-zeisscolor);
+    --ion-color-base-rgb: var(--ion-color-zeisscolor-rgb);
+    --ion-color-contrast: var(--ion-color-zeisscolor-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-zeisscolor-contrast-rgb);
+    --ion-color-shade: var(--ion-color-zeisscolor-shade);
+    --ion-color-tint: var(--ion-color-zeisscolor-tint);
+  }
 }
